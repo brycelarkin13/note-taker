@@ -11,29 +11,29 @@ app.use(express.json());
 
 app.get("/notes", (req, res) => {
     //res.send('hello');
-    res.sendFile(path.join(__dirname, "./public/notes.html"));
+    res.sendFile(path.join(__dirname, "./develop/public/notes.html"));
 });
 
 app.get("/api/notes", (req, res) => {
-    res.sendFile(path.join(__dirname, "./db/db.json"));
+    res.sendFile(path.join(__dirname, "./develop/db/db.json"));
 });
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "./public/index.html"));
+    res.sendFile(path.join(__dirname, "./develop/public/index.html"));
 });
 
 app.post("/api/notes", (req, res) => {
     let newNote = req.body;
-    let noteList = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
+    let noteList = JSON.parse(fs.readFileSync("./develop/db/db.json", "utf8"));
     let notelength = (noteList.length).toString();
 
     newNote.id = notelength;
     noteList.push(newNote);
 
-    fs.writeFileSync(".db/db.json", JSON.stringify(noteList));
+    fs.writeFileSync(".develop/db/db.json", JSON.stringify(noteList));
     res.json(noteList);
 });
 
-app.listen(3001, () => {
+app.listen(PORT, () => {
     console.log('Server now on port ${PORT}!');
 });
