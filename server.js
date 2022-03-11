@@ -17,22 +17,22 @@ app.use(express.json());
 //app.use('/api', apiRoutes);
 //app.use('/', htmlRoutes);
 
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "public/index.html"));
-});
-
 app.get("/notes", (req, res) => {
     //res.send('hello');
-    res.sendFile(path.join(__dirname, "public/notes.html"));
+    res.sendFile(path.join(__dirname, "/public/notes.html"));
 });
 
 app.get("/api/notes", (req, res) => {
-    res.sendFile(path.join(__dirname, "db/db.json"));
+    res.sendFile(path.join(__dirname, "/db/db.json"));
+});
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
 app.post("/api/notes", (req, res) => {
     let newNote = req.body;
-    let noteList = JSON.parse(fs.readFileSync("db/db.json", "utf8"));
+    let noteList = JSON.parse(fs.readFileSync("/db/db.json", "utf8"));
     let notelength = (noteList.length).toString();
 
     newNote.id = notelength;
@@ -43,7 +43,7 @@ app.post("/api/notes", (req, res) => {
 });
 
 app.delete("/api/notes/:id", (req, res) => {
-    let noteList = JSON.parse(fs.readFileSync("db/db.json", "utf8"));
+    let noteList = JSON.parse(fs.readFileSync("/db/db.json", "utf8"));
     let noteId = (req.params.id).toString();
 
     //filter all notes that does not have matching id and saved them as a new array
@@ -53,7 +53,7 @@ app.delete("/api/notes/:id", (req, res) => {
     })
 
     //write the updated data to db.json and display the updated note
-    fs.writeFileSync("db/db.json", JSON.stringify(noteList));
+    fs.writeFileSync("/db/db.json", JSON.stringify(noteList));
     res.json(noteList);
 });
 
