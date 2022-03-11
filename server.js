@@ -1,6 +1,3 @@
-//const apiRoutes = require('./routes/apiRoutes')
-//const htmlRoutes = require('./routes/htmlRoutes')
-
 const fs = require('fs');
 const express = require("express");
 const path = require("path");
@@ -14,8 +11,6 @@ app.use(express.urlencoded({ extended: true }));
 // parse incoming json data
 app.use(express.json());
 
-//app.use('/api', apiRoutes);
-//app.use('/', htmlRoutes);
 
 app.get("/notes", (req, res) => {
     //res.send('hello');
