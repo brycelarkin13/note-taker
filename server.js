@@ -22,7 +22,7 @@ app.get("*", (req, res) => {
 });
 
 app.get("/notes", (req, res) => {
-    res.send('hello');
+    //res.send('hello');
     res.sendFile(path.join(__dirname, "public/notes.html"));
 });
 
