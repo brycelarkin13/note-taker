@@ -3,7 +3,7 @@ const express = require("express");
 const path = require("path");
 
 const app = express();
-//const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
@@ -35,5 +35,5 @@ app.post("/api/notes", (req, res) => {
 });
 
 app.listen(3001, () => {
-    console.log('Server now on port 3001!');
+    console.log('Server now on port ${PORT}!');
 });
