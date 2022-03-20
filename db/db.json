@@ -1,14 +1,1 @@
-[
-    {
-        "title":"Test Title",
-        "text":"Test text"
-    },
-    {
-        "title":"Note 2",
-        "text":"Go to store at 3PM"
-    },
-    {
-        "title":"Note 3",
-        "text":"Sams Birthday on Tuesday"
-    }
-]
+[{"title":"Test Title","text":"Test text"},{"title":"Note 2","text":"Go to store at 3PM"},{"title":"Note 3","text":"Sams Birthday on Tuesday"},{"title":"does it work","text":"testing routes","id":"3"}]
